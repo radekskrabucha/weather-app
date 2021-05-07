@@ -24,7 +24,7 @@ function getWeatherData(data) {
       },
       description: data.weather[0].description,
       icon: data.weather[0].icon,
-      iconUrl: '',
+      iconUrl: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
       country: data.sys.country
    }
 }
@@ -36,9 +36,7 @@ async function getWeatherBySearch(city) {
 
    const response = await fetch(url, {mode: 'cors'});
    const data = await response.json();
-   const imgUrl = await fetch(`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
    const cityWeather = getWeatherData(data);
-   cityWeather.iconUrl = imgUrl.url;
    return cityWeather;
 }
 searchForm.addEventListener('submit', (e) => {
