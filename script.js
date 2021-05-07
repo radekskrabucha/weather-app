@@ -36,7 +36,7 @@ async function getWeatherBySearch(city) {
 
    const response = await fetch(url, {mode: 'cors'});
    const data = await response.json();
-   const imgUrl = await fetch(`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
+   const imgUrl = await fetch(`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
    const cityWeather = getWeatherData(data);
    cityWeather.iconUrl = imgUrl.url;
    return cityWeather;
